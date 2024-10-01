@@ -1,9 +1,18 @@
 MIN_PASSWORD_LENGTH = 1
-password = input("Enter a password: ")
-password_length = len(password)
-if len(password) < MIN_PASSWORD_LENGTH:
-    print("Invalid password length")
+
+def main():
+    password = get_password()
+    print_password(password)
+
+def get_password():
     password = input("Enter a password: ")
-else:
-    for i in range(0, password_length):
+    while len(password) < MIN_PASSWORD_LENGTH:
+        print("Invalid password length")
+        get_password()
+    return password
+
+def print_password(password):
+    for i in range(0, len(password)):
         print("*", end="")
+
+main()
