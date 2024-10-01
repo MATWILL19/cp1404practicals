@@ -5,31 +5,29 @@ MENU = """(I)nput Score
 (S)how stars
 (Q)uit"""
 
-def main(MENU):
-    score = -1
-    main_menu(MENU, score)
+def main():
+    score = get_score()
+    main_menu(score)
     print("Goodbye")
 
 """This function is the main menu of the program"""
-def main_menu(MENU, score):
+def main_menu(score):
     print(MENU)
-    menu_choice = input("")
+    menu_choice = input("").upper()
     while menu_choice != "Q":
         if menu_choice == "I":
-            score = int(input("Enter score: "))
+            score = get_score()
         elif menu_choice == "P":
             result = calculate_score(score)
             print(result)
         elif menu_choice == "S":
             print_stars(score)
         print(MENU)
-        menu_choice = input("")
+        menu_choice = input("").upper()
 
 """This function calculates a result based on a given score"""
 def calculate_score(score):
-    if score > 100 or score < 0:
-        result = "Invalid"
-    elif score >= 90:
+    if score >= 90:
         result = "Excellent"
     elif score >= 50:
         result = "Passable"
@@ -41,6 +39,14 @@ def calculate_score(score):
 def print_stars(score):
     for i in range(0, score):
         print("*", end="")
-        print("")
+    print("")
 
-main(MENU)
+"""This function gets and error checks a score"""
+def get_score():
+    score = int(input("Enter score: "))
+    while score > 100 or score < 0:
+        print("Invalid")
+        score = int(input("Enter score: "))
+    return score
+
+main()
