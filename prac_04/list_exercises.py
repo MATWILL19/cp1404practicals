@@ -36,9 +36,8 @@ def compare_username(username):
     """Compare username against list"""
     if username in USERNAMES:
         access_status = "Access granted"
-        return access_status
     else:
         access_status = "Access denied - releasing killbots"
-        return access_status
+    return access_status
 main()
 
