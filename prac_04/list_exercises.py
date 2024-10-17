@@ -33,7 +33,7 @@ def main():
     print(access)
 
 def compare_username(username):
-    """Compare username against list"""
+    """Compare username against a list"""
     if username in USERNAMES:
         access_status = "Access granted"
     else:
