@@ -7,8 +7,8 @@ word_to_count = {}
 
 word_input = input("Please enter a sentence: ")
 words = word_input.split(" ")
-for part in words:
-    word_to_count[part] = word_to_count.get(part, 0) + 1
+for word in words:
+    word_to_count[word] = word_to_count.get(word, 0) + 1
 words = list(word_to_count.keys())
 words.sort()
 word_length = max((len(word) for word in word_input))
