@@ -23,7 +23,6 @@ def process_wimbledon_champions(champions):
             champion_to_count[champion[2]] = 1
     return champion_to_count, countries
 
-
 def get_wimbledon_file():
     """Read the attached wimbledon file and create champions list"""
     champions = []
