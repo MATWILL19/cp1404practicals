@@ -4,9 +4,9 @@ Actual time = """
 
 class ProgrammingLanguage:
     """"""
-    def __init__(self, field="", typing="", reflection=False, year=0):
+    def __init__(self, name="", typing="", reflection=False, year=0):
         """Initialize a Programming Language instance"""
-        self.field = field
+        self.name = name
         self.typing = typing
         self.reflection = reflection
         self.year = year
@@ -14,7 +14,8 @@ class ProgrammingLanguage:
     def is_dynamic(self):
         """Determine if a language is dynamic"""
         if self.typing == "Dynamic":
+            return True
 
     def __str__(self):
       """Return a string with programming language name, typing, reflection and year"""
-      return f"{self.field}, {self.typing} Typing, reflection={self.reflection}, First appeared in {self.year}"
+      return f"{self.name}, {self.typing} Typing, reflection={self.reflection}, First appeared in {self.year}"
