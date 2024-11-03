@@ -29,7 +29,7 @@ def get_wimbledon_file():
     with open(FILENAME, "r", encoding="utf-8-sig") as in_file:
         in_file.readline()
         for line in in_file:
-            parts = line.strip().split(",")
+            parts = line.strip().split(",")-
             champions.append(parts)
     return champions
 

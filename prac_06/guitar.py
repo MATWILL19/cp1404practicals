@@ -5,7 +5,7 @@ Actual = 40m"""
 class Guitar:
     """Identify the age and vintage status of a guitar"""
     def __init__(self, name="", year=int(), cost=float()):
-        """Initaliaze a guitar instance"""
+        """Initialize a guitar instance"""
         self.name = name
         self.year = year
         self.cost = cost
@@ -18,9 +18,9 @@ class Guitar:
     def is_vintage(self):
         """Determine if the guitar is vintage"""
         if self.year <= 1976:
-            return True
+            return "(vintage)"
         else:
-            return False
+            return ""
 
     def __str__(self):
         """Return a string with guitar names, year and cost"""
