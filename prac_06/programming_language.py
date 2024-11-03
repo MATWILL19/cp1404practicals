@@ -3,7 +3,7 @@
 Actual time = """
 
 class ProgrammingLanguage:
-    """"""
+    """Identify if a language is dynamic"""
     def __init__(self, name="", typing="", reflection=False, year=0):
         """Initialize a Programming Language instance"""
         self.name = name
