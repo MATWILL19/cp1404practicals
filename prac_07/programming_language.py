@@ -7,16 +7,17 @@ Programming Language class with tests.
 class ProgrammingLanguage:
     """Represent information about a programming language."""
 
-    def __init__(self, name, typing, reflection, year):
+    def __init__(self, name, typing, reflection, year, pointer_arithmetic):
         """Construct a ProgrammingLanguage from the given values."""
         self.name = name
         self.typing = typing
         self.reflection = reflection
         self.year = year
+        self.pointer_arithmetic = pointer_arithmetic
 
-    def __repr__(self):
+    def __str__(self):
         """Return string representation of a ProgrammingLanguage."""
-        return f"{self.name}, {self.typing} Typing, Reflection={self.reflection}, First appeared in {self.year}"
+        return f"{self.name}, {self.typing} Typing, Reflection={self.reflection}, First appeared in {self.year}, Pointer_Arithmetic={self.pointer_arithmetic} "
 
     def is_dynamic(self):
         """Determine if language is dynamically typed."""
@@ -36,7 +37,6 @@ def run_tests():
     for language in languages:
         if language.is_dynamic():
             print(language.name)
-
 
 if __name__ == "__main__":
     run_tests()

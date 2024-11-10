@@ -1,3 +1,4 @@
-# CP1404 Practicals
+# CP1404 - Programming II
+## Mathew Willington
 
-Practical work for IT@JCU CP1404
+ 
