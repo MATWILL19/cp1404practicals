@@ -1,6 +1,4 @@
 """CP1404 Practical 7 - Guitar"""
-"""Estimated = 60m
-Actual = 40m"""
 
 class Guitar:
     """Identify the age and vintage status of a guitar"""

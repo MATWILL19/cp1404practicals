@@ -1,7 +1,11 @@
-"""Prac 07 Guitars program"""
+"""CP1404 Practical 7 - myguitars"""
+"""Estimated = 60m
+Actual = 90m"""
+
 from prac_07.guitar import Guitar
 
 def main():
+    """Print guitars from user input and a file, then save the inputted guitars."""
     print("My guitars!")
     guitars = load_guitars()
     get_guitars(guitars)
