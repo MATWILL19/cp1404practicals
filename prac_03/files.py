@@ -12,7 +12,7 @@ out_file = open(FILENAME, 'r')
 print(f"Hi {out_file.read().strip()}!", end="")
 out_file.close()
 
-# c.
+c.
 
 FILENAME = "numbers.txt"
 with open(FILENAME, "r") as in_file:
