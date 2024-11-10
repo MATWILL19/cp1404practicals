@@ -21,8 +21,10 @@ class Guitar:
             return "(vintage)"
         else:
             return ""
-    def __lt__(self):
+
+    def __lt__(self, other):
         """This method will sort guitars by year"""
+        return self.year < other.year
 
     def __str__(self):
         """Return a string with guitar names, year and cost"""
