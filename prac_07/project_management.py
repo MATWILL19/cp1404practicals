@@ -1,7 +1,4 @@
 """CP1404 Prac 07 Project Management"""
-from sys import intern
-
-from Tools.scripts.dutree import display
 
 """Estimated time: 150min"""
 """Actual time: 190min"""
@@ -114,6 +111,60 @@ def display_projects(projects):
               f", estimate: ${project.cost_estimate}, completion: {project.completion}%")
     return
 
+def filter_projects(projects):
+    """Filter projects by user inputted date"""
+    date_string = input("Date (d/m/yyyy): ")
+    filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    filtered_projects = [project for project in projects if project.filter_date(filter_date)]
+    for project in filtered_projects:
+        print(f"  {project.name}, {project.start_date.strftime('%d/%m/%Y')}, priority {project.priority}"
+              f", estimate: ${project.cost_estimate}, completion: {project.completion}%")
+    return
+
+def add_project(projects):
+    """Add new project from user input"""
+    print("Lets add a new project")
+    name = input("Project name: ")
+    date = input("Start date: ")
+    start_date = datetime.datetime.strptime(date, "%d/%m/%Y").date()
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: "))
+    completion = int(input("Completion: "))
+    project_details = Project(name, start_date, priority, cost_estimate, completion)
+    projects.append(project_details)
+    return projects
+
+def update_project(projects):
+    """Update project from user input"""
+    for i, project in enumerate(projects):
+        print(f"{i} {project.name}, {project.start_date.strftime('%d/%m/%Y')}, priority {project.priority}"
+              f", estimate: ${project.cost_estimate}, completion: {project.completion}%")
+    project_choice = int(input("Project choice: "))
+    selected_project = projects[project_choice]
+    print(f"{selected_project.name}, {selected_project.start_date.strftime('%d/%m/%Y')}, priority {selected_project.priority}"
+          f", estimate: ${selected_project.cost_estimate}, completion: {selected_project.completion}%")
+    print("New completion: ")
+    completion = error_check_integer_input()
+    print("New priority: ")
+    priority = error_check_integer_input()
+    if completion == "":
+        completion = selected_project.completion
+    if priority == "":
+        priority = selected_project.priority
+    projects[project_choice] = Project(selected_project.name, selected_project.start_date, priority, selected_project.cost_estimate, completion)
+    return projects
+
+def error_check_integer_input():
+    """Error check integer inputs"""
+    while True:
+        try:
+            integer_input = int(input(">>> "))
+            while integer_input < 0 or integer_input > 100:
+                print("Number must be >= 0 or <=100")
+                integer_input = int(input(">>> "))
+            return integer_input
+        except ValueError:
+            print("Invalid input; enter a valid number")
 
 
 main()
