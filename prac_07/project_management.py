@@ -116,6 +116,7 @@ def filter_projects(projects):
     date_string = input("Date (d/m/yyyy): ")
     filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
     filtered_projects = [project for project in projects if project.filter_date(filter_date)]
+    filtered_projects.sort()
     for project in filtered_projects:
         print(f"  {project.name}, {project.start_date.strftime('%d/%m/%Y')}, priority {project.priority}"
               f", estimate: ${project.cost_estimate}, completion: {project.completion}%")
@@ -124,12 +125,16 @@ def filter_projects(projects):
 def add_project(projects):
     """Add new project from user input"""
     print("Lets add a new project")
-    name = input("Project name: ")
-    date = input("Start date: ")
-    start_date = datetime.datetime.strptime(date, "%d/%m/%Y").date()
-    priority = int(input("Priority: "))
-    cost_estimate = float(input("Cost estimate: "))
-    completion = int(input("Completion: "))
+    print("Project name")
+    name = input(">>> ")
+    print("Project start date (dd/mm/yyyy)")
+    start_date = error_check_date_input()
+    print("Priority")
+    priority = error_check_integer_input()
+    print("Cost estimate")
+    cost_estimate = error_check_float_input()
+    print("Completion")
+    completion = error_check_integer_input()
     project_details = Project(name, start_date, priority, cost_estimate, completion)
     projects.append(project_details)
     return projects
@@ -166,5 +171,26 @@ def error_check_integer_input():
         except ValueError:
             print("Invalid input; enter a valid number")
 
+def error_check_float_input():
+    """Error check integer inputs"""
+    while True:
+        try:
+            float_input = float(input(">>> "))
+            while float_input < 0:
+                print("Number must be >= 0")
+                float_input = float(input(">>> "))
+            return float_input
+        except ValueError:
+            print("Invalid input; enter a valid number")
+
+def error_check_date_input():
+    """Error check integer inputs"""
+    while True:
+        try:
+            date_input = input(">>> ")
+            start_date = datetime.datetime.strptime(date_input, "%d/%m/%Y").date()
+            return start_date
+        except ValueError:
+            print("Invalid input; enter a date using dd/mm/yyyy format")
 
 main()

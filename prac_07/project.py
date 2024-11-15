@@ -13,11 +13,11 @@ class Project:
         return self.completion == 100
 
     def __lt__(self, other):
-        """This method will sort projects by priority"""
+        """Sort projects by priority"""
         return self.priority < other.priority
 
     def filter_date(self, filter_date):
-        """This method will sort projects by date"""
+        """Sort projects by provided date"""
         return self.start_date > filter_date
 
     def __str__(self):
