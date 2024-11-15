@@ -28,38 +28,20 @@ def main():
             print("Please enter filename")
             filename = input(">>> ")
             projects = load_projects(filename)
-            print("")
-            print(MAIN_MENU)
-            choice = input(">>> ").upper()
         elif choice == "S":
             save_projects(projects, filename)
-            print("")
-            print(MAIN_MENU)
-            choice = input(">>> ").upper()
         elif choice == "D":
             display_projects(projects)
-            print("")
-            print(MAIN_MENU)
-            choice = input(">>> ").upper()
         elif choice == "F":
             filter_projects(projects)
-            print("")
-            print(MAIN_MENU)
-            choice = input(">>> ").upper()
         elif choice == "A":
             add_project(projects)
-            print("")
-            print(MAIN_MENU)
-            choice = input(">>> ").upper()
         elif choice == "U":
             update_project(projects)
-            print("")
-            print(MAIN_MENU)
-            choice = input(">>> ").upper()
         else:
             print("Invalid input")
-            print(MAIN_MENU)
-            choice = input(">>> ").upper()
+        print(MAIN_MENU)
+        choice = input(">>> ").upper()
     save_choice = input(f"Would you like to save {filename}? ").upper()
     if save_choice == "Y":
         save_projects(projects, filename)
@@ -96,7 +78,7 @@ def save_projects(projects, filename):
     return
 
 def display_projects(projects):
-    """Display loaded projects"""
+    """Sorts and Displays loaded projects"""
     uncompleted_projects = [project for project in projects if not project.is_complete()]
     uncompleted_projects.sort()
     completed_projects = [project for project in projects if project.is_complete()]
@@ -116,7 +98,6 @@ def filter_projects(projects):
     date_string = input("Date (d/m/yyyy): ")
     filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
     filtered_projects = [project for project in projects if project.filter_date(filter_date)]
-    filtered_projects.sort()
     for project in filtered_projects:
         print(f"  {project.name}, {project.start_date.strftime('%d/%m/%Y')}, priority {project.priority}"
               f", estimate: ${project.cost_estimate}, completion: {project.completion}%")
@@ -172,7 +153,7 @@ def error_check_integer_input():
             print("Invalid input; enter a valid number")
 
 def error_check_float_input():
-    """Error check integer inputs"""
+    """Error check float inputs"""
     while True:
         try:
             float_input = float(input(">>> "))
@@ -184,7 +165,7 @@ def error_check_float_input():
             print("Invalid input; enter a valid number")
 
 def error_check_date_input():
-    """Error check integer inputs"""
+    """Error check date inputs"""
     while True:
         try:
             date_input = input(">>> ")
