@@ -2,6 +2,7 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import StringProperty
+MILE_TO_KM = 1.60934
 
 class ConvertDistance(App):
     """Convert miles to kilometres"""
@@ -11,21 +12,30 @@ class ConvertDistance(App):
         """Construct the app"""
         self.title = "Convert miles to kilometers program"
         self.root = Builder.load_file('convert_miles_km.kv')
-        self.output_km = "Convert miles to kilometers"
+        self.output_km = ""
         return self.root
 
-    def convert_mil_to_km(self):
+    def handle_calculate(self, text):
+        """Handle calculation (could be button press or other call)."""
+        print("handle calculate")
+        miles = self.convert_number(text)
+        self.convert_mile_to_km(miles)
+
+    def convert_mile_to_km(self, miles):
         """Convert miles to kilometres"""
-        self.root.ids.output_label.text = f"{self.root.ids.input_number.text}"
+        self.output_km = str(miles * MILE_TO_KM)
 
     def handle_increment(self, text, increment):
         """Increase miles by 1"""
-        miles = self.convert_mil_to_km(text) + increment
+        miles = self.convert_number(text) + increment
+        self.root.ids.input_number.text = str(miles)
 
-    def convert_number(text):
+    def convert_number(self, text):
         """Convert text to number"""
         try:
-            return int()
+            return float(text)
+        except ValueError:
+            return 0.0
 
 
 ConvertDistance().run()
