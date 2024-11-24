@@ -1,0 +1,12 @@
+filename use constant
+no need for else
+no need for formatting list just do it directly using variables
+variable and function share name
+filter date not a good name
+repeated print function unecessarily
+error check is poor naming
+
+a get function should always return
+use filename variable or parameter
+parts again
+
