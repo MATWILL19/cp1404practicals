@@ -80,5 +80,4 @@ def convert_phrase_to_sentence(str):
     >>> convert_phrase_to_sentence('help me obiwan kenobi.')
     'Help me obiwan kenobi.'
     """
-
-    return
+    return str.capitalize().strip(".") + "."
