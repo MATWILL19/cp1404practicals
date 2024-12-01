@@ -70,3 +70,15 @@ doctest.testmod()
 # Run your doctests and watch the tests fail.
 # Then write the body of the function so that the tests pass.
 
+def convert_phrase_to_sentence(str):
+    """
+    Determine if the word is as long or longer than the length passed in
+    >>> convert_phrase_to_sentence('hello')
+    'Hello.'
+    >>> convert_phrase_to_sentence('It is an ex parrot.')
+    'It is an ex parrot.'
+    >>> convert_phrase_to_sentence('help me obiwan kenobi.')
+    'Help me obiwan kenobi.'
+    """
+
+    return
